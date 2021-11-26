@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "688291538460",
+    "project_id": "sguash-time-project",
+    "storage_bucket": "sguash-time-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688291538460:android:fa4271c3d5cbf6485f61d9",
+        "android_client_info": {
+          "package_name": "hu.bme.aut.android.squashtime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688291538460-bkkpn4q5hhos4v02u2qvmq0279g40366.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz9-NRXa_1ULC3P-tS9HmG2qXWwHKudMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688291538460-bkkpn4q5hhos4v02u2qvmq0279g40366.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
