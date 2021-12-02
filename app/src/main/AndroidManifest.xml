@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SquashTime">
         <activity
+            android:name=".CreatePostActivity"
+            android:exported="true" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_posts"
