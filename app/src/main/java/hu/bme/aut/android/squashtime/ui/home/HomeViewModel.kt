@@ -1,4 +1,4 @@
-package com.example.navigationdrawer.ui.home
+package hu.bme.aut.android.squashtime.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

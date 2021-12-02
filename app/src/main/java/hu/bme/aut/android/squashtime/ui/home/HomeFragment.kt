@@ -1,4 +1,4 @@
-package com.example.navigationdrawer.ui.home
+package hu.bme.aut.android.squashtime.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
