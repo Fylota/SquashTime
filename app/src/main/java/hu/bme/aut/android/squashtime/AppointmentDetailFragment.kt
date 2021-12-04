@@ -1,54 +1,57 @@
 package hu.bme.aut.android.squashtime
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.FieldPath
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import hu.bme.aut.android.squashtime.adapter.AppointmentsAdapter
 import hu.bme.aut.android.squashtime.data.Appointment
 import hu.bme.aut.android.squashtime.databinding.FragmentAppointmentDetailBinding
 import java.util.*
 
-class AppointmentDetailFragment : Fragment(), AppointmentsAdapter.AppointmentItemClickListener {
+class AppointmentDetailFragment : Fragment() {
 
     private var selectedAppointment: Appointment? = null
+    private lateinit var appointmentsAdapter: AppointmentsAdapter
 
-    private lateinit var _binding: FragmentAppointmentDetailBinding
-    private val binding get() = _binding
-
-    companion object {
-
-        private const val KEY_APPOINTMENT_DATE = "KEY_APPOINTMENT_DATE"
-
-        fun newInstance(appointmentDate: Date): AppointmentDetailFragment {
-            val args = Bundle()
-            args.putString(KEY_APPOINTMENT_DATE, appointmentDate.toString())
-
-            val result = AppointmentDetailFragment()
-            result.arguments = args
-            return result
-        }
-
-    }
+    private var _binding: FragmentAppointmentDetailBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        arguments?.let { args ->
-            selectedAppointment = Appointment(
-                uid = "",
-                date = Date(),
-                available = true,
-                booked_by = null,
-                comment = ""
-            )
-        }
+        val db = Firebase.firestore
+        db.collection("appointments")
+            .whereEqualTo("uid",arguments?.getString("appID")).get()
+            .addOnSuccessListener { results ->
+                for (document in results) {
+                    if (document != null) {
+                        Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                        val tmpAppointment = document.toObject<Appointment>()
+                        selectedAppointment = Appointment(tmpAppointment.uid,tmpAppointment.date, tmpAppointment.available)
+                    } else {
+                        Log.d(TAG, "No such document")
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentAppointmentDetailBinding.inflate(inflater, container, false)
         return binding.root
@@ -56,15 +59,15 @@ class AppointmentDetailFragment : Fragment(), AppointmentsAdapter.AppointmentIte
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Log.d(TAG, "The selected app in onViewCreated: $selectedAppointment")
         binding.appointmentDetail.text = selectedAppointment?.date.toString()
+        binding.textDetails.text = selectedAppointment?.date.toString()
     }
 
-    override fun onItemClick(appointment: Appointment) {
-        val fragment = newInstance(appointment.date)
-        requireActivity().supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.nav_host_fragment_content_home, fragment)
-            .commit()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

@@ -9,11 +9,46 @@
         android:id="@+id/nav_home"
         android:name="hu.bme.aut.android.squashtime.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_booking2"
+            app:destination="@id/nav_booking" />
+        <action
+            android:id="@+id/action_nav_home_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_booking"
         android:name="hu.bme.aut.android.squashtime.ui.booking.BookingFragment"
         android:label="@string/menu_booking"
-        tools:layout="@layout/fragment_booking" />
+        tools:layout="@layout/fragment_booking" >
+        <action
+            android:id="@+id/action_nav_booking_to_appointmentDetailFragment"
+            app:destination="@id/appointmentDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appointmentDetailFragment"
+        android:name="hu.bme.aut.android.squashtime.AppointmentDetailFragment"
+        android:label="fragment_appointment_detail"
+        tools:layout="@layout/fragment_appointment_detail" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="hu.bme.aut.android.squashtime.ui.map.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
+    <action
+        android:id="@+id/action_global_nav_home"
+        app:destination="@id/nav_home"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_nav_booking"
+        app:destination="@id/nav_booking"
+        app:popUpTo="@id/mobile_navigation"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_mapsFragment"
+        app:destination="@id/mapsFragment"
+        app:popUpTo="@id/mobile_navigation" />
 </navigation>

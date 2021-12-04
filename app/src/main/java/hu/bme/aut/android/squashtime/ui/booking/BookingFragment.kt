@@ -40,12 +40,12 @@ class BookingFragment : Fragment() {
         _binding = FragmentBookingBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        appointmentsAdapter = activity?.let { AppointmentsAdapter(it.applicationContext) }!!
+        appointmentsAdapter = AppointmentsAdapter(this.context)
+        binding.rvDates.adapter = appointmentsAdapter
         binding.rvDates.layoutManager = LinearLayoutManager(this.context).apply {
             reverseLayout = true
             stackFromEnd = true
         }
-        binding.rvDates.adapter = appointmentsAdapter
 
         initAppointmentsListener()
 
@@ -55,12 +55,8 @@ class BookingFragment : Fragment() {
     private fun initAppointmentsListener() {
         val db = Firebase.firestore
         db.collection("appointments")
-            .addSnapshotListener { snapshots, e ->
-                if (e != null) {
-                    Toast.makeText(this.context, e.toString(), Toast.LENGTH_SHORT).show()
-                    return@addSnapshotListener
-                }
-
+            .whereEqualTo("available",true).get()
+            .addOnSuccessListener { snapshots ->
                 for (dc in snapshots!!.documentChanges) {
                     when (dc.type) {
                         DocumentChange.Type.ADDED -> appointmentsAdapter.addAppointment(dc.document.toObject<Appointment>())
@@ -68,6 +64,7 @@ class BookingFragment : Fragment() {
                         DocumentChange.Type.REMOVED -> Toast.makeText(this.context, dc.document.data.toString(), Toast.LENGTH_SHORT).show()
                     }
                 }
+
             }
     }
 

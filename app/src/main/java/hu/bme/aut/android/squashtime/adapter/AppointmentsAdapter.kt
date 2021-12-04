@@ -1,23 +1,25 @@
 package hu.bme.aut.android.squashtime.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import hu.bme.aut.android.squashtime.R
 import hu.bme.aut.android.squashtime.data.Appointment
 import hu.bme.aut.android.squashtime.databinding.CardAppointmentBinding
 
-class AppointmentsAdapter(private val context: Context) :
+class AppointmentsAdapter(private val context: Context?) :
     ListAdapter<Appointment, AppointmentsAdapter.AppointmentViewHolder>(itemCallback) {
 
-    private var postList: List<Appointment> = emptyList()
-    private var lastPosition = -1
-    var itemClickListener: AppointmentItemClickListener? = null
+    private var appointmentList: List<Appointment> = emptyList()
 
-    class AppointmentViewHolder(binding: CardAppointmentBinding) : RecyclerView.ViewHolder(binding.root) {
+    class AppointmentViewHolder(val binding: CardAppointmentBinding) : RecyclerView.ViewHolder(binding.root) {
         val tvDate: TextView = binding.tvDate
     }
 
@@ -25,15 +27,23 @@ class AppointmentsAdapter(private val context: Context) :
         AppointmentViewHolder(CardAppointmentBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: AppointmentViewHolder, position: Int) {
-        val tmpPost = postList[position]
-        holder.tvDate.text = tmpPost.date.toString()
+        val tmpApp = appointmentList[position]
+        holder.binding.let { binding ->
+            binding.tvDate.text = tmpApp.date.toString()
+        }
+        holder.binding.cardView.setOnClickListener { view ->
+            val bundle = Bundle()
+            bundle.putString("appID",tmpApp.uid)
+            view.findNavController().navigate(R.id.action_nav_booking_to_appointmentDetailFragment, bundle)
+        }
     }
 
-    fun addAppointment(post: Appointment?) {
-        post ?: return
+    @SuppressLint("NotifyDataSetChanged")
+    fun addAppointment(app: Appointment?) {
+        app ?: return
 
-        postList += (post)
-        submitList((postList))
+        appointmentList += app
+        submitList((appointmentList))
     }
 
     companion object {
@@ -46,19 +56,5 @@ class AppointmentsAdapter(private val context: Context) :
                 return oldItem == newItem
             }
         }
-    }
-
-    inner class ViewHolder(val binding: CardAppointmentBinding) : RecyclerView.ViewHolder(binding.root) {
-        var appointment: Appointment? = null
-
-        init {
-            itemView.setOnClickListener {
-                appointment?.let { appointment -> itemClickListener?.onItemClick(appointment) }
-            }
-        }
-    }
-
-    interface AppointmentItemClickListener {
-        fun onItemClick(appointment: Appointment)
     }
 }
