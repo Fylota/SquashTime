@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -59,7 +60,8 @@ class HomeFragment : Fragment() {
         val db = Firebase.firestore
         db.collection("appointments")
             .whereNotEqualTo("booked_by", null)
-            .whereEqualTo("booked_by", FirebaseAuth.getInstance().currentUser?.email).get()
+            .whereEqualTo("booked_by", FirebaseAuth.getInstance().currentUser?.email)
+            .get()
             .addOnSuccessListener { snapshots ->
                 for (dc in snapshots!!.documentChanges) {
                     when (dc.type) {
