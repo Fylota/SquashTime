@@ -36,7 +36,9 @@ class AppointmentsAdapter(private val context: Context?) :
             bundle.putString("appID",tmpApp.uid)
             bundle.putString("date",tmpApp.date.toString())
             bundle.putString("courtNumber", tmpApp.court_number)
-            view.findNavController().navigate(R.id.action_nav_booking_to_appointmentDetailFragment, bundle)
+            bundle.putBoolean("available",tmpApp.available)
+            val navController = view.findNavController()
+            navController.navigate(R.id.appointmentDetailFragment, bundle)
         }
     }
 

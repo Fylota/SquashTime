@@ -35,7 +35,8 @@ class AppointmentDetailFragment() : Fragment() {
             selectedAppointment = Appointment(
                 uid = args.getString("appID") ?: "",
                 date = args.getString("date") ?: "",
-                court_number = args.getString("courtNumber") ?: ""
+                court_number = args.getString("courtNumber") ?: "",
+                available = args.getBoolean("available")
             )
         }
 
@@ -60,6 +61,16 @@ class AppointmentDetailFragment() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.appointmentDate.text = selectedAppointment?.date
         binding.appointmentCourtNumber.text = selectedAppointment?.court_number
+
+        if(selectedAppointment?.available == true) {
+            binding.buttonBookAppointment.isEnabled = true
+            binding.buttonCancelAppointment.isVisible = false
+            binding.buttonCancelAppointment.isClickable = false
+        } else {
+            binding.buttonBookAppointment.isEnabled = false
+            binding.buttonCancelAppointment.isVisible = true
+            binding.buttonCancelAppointment.isClickable = true
+        }
     }
 
     override fun onDestroyView() {

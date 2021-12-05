@@ -3,11 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/drawable/side_nav_bar.xml" value="0.23385416666666667" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/activity_booking.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/activity_home.xml" value="0.30416666666666664" />
         <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
-        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/activity_posts.xml" value="0.1" />
-        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/app_bar_posts.xml" value="0.1" />
-        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/content_posts.xml" value="0.1" />
-        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/menu/activity_posts_drawer.xml" value="0.1" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/activity_posts.xml" value="0.264" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/app_bar_home.xml" value="0.21770833333333334" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/app_bar_posts.xml" value="0.264" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/card_date.xml" value="0.30416666666666664" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/card_post.xml" value="0.1" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/content_home.xml" value="0.10587639311043566" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/content_posts.xml" value="0.264" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/fragment_appointment_detail.xml" value="0.21770833333333334" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/fragment_booking.xml" value="0.30416666666666664" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/fragment_gallery.xml" value="0.30416666666666664" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/fragment_my_appointment_details.xml" value="0.23278985507246377" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/fragment_slideshow.xml" value="0.16354166666666667" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/nav_header_home.xml" value="0.30416666666666664" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/nav_header_posts.xml" value="0.16354166666666667" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/layout/row_appointment.xml" value="0.536" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/menu/activity_home_drawer.xml" value="0.30416666666666664" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/menu/activity_posts_drawer.xml" value="0.264" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/menu/home.xml" value="0.30416666666666664" />
+        <entry key="..\:/Users/Andras/Documents/ago/android/SquashTime/app/src/main/res/menu/posts.xml" value="0.30416666666666664" />
       </map>
     </option>
   </component>
