@@ -34,6 +34,8 @@ class AppointmentsAdapter(private val context: Context?) :
         holder.binding.cardView.setOnClickListener { view ->
             val bundle = Bundle()
             bundle.putString("appID",tmpApp.uid)
+            bundle.putString("date",tmpApp.date.toString())
+            bundle.putString("courtNumber", tmpApp.court_number)
             view.findNavController().navigate(R.id.action_nav_booking_to_appointmentDetailFragment, bundle)
         }
     }

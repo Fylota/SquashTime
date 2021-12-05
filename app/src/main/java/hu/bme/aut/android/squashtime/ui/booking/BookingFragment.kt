@@ -43,8 +43,6 @@ class BookingFragment : Fragment() {
         appointmentsAdapter = AppointmentsAdapter(this.context)
         binding.rvDates.adapter = appointmentsAdapter
         binding.rvDates.layoutManager = LinearLayoutManager(this.context).apply {
-            reverseLayout = true
-            stackFromEnd = true
         }
 
         initAppointmentsListener()

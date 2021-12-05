@@ -15,5 +15,6 @@
     <string name="menu_logout">Log out</string>
     <string name="menu_maps">Map</string>
     <string name="book_this">Book this</string>
+    <string name="cancel_this">Cancel Appointment</string>
 
 </resources>
